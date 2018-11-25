@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>Hello, world!</title>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Content here -->
+            <div class="jumbotron" style="margin-top: 20px;">
+                <h1 class="display-4">Plivo Contacts API</h1>
+                <p class="lead">Something.</p>
+                <hr class="my-4">
+            </div>
+            <div class="accordion" id="accordionExample" style="margin-bottom: 20px;">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="padding-top: 10px;">
+                        GET All Contacts
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <button id="allButton" type="button" class="btn btn-primary">GET /api/v1/contacts/all</button>
+                        </div>
+                        <div id="allContacts" style="padding: 0 20px 10px 20px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        GET Single Contact
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form id="singleForm">
+                                <div class="form-group">
+                                    <label for="singleInputID">Contact ID</label>
+                                    <input type="number" min="1" class="form-control" id="singleInputID" placeholder="Enter ID">
+                                </div>
+                                <button id="singleButton" type="button" class="btn btn-primary" style="margin-bottom: 10px;">GET /api/v1/contacts/:id/details</button>
+                            </form>
+                            <div id="singleContact">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        POST Create Contact
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form id="createForm">
+                                <div class="form-group">
+                                    <label for="createName">Contact Name</label>
+                                    <input type="text" class="form-control" id="createName" placeholder="Enter Name">
+                                    <label for="createEmail">Contact Email</label>
+                                    <input type="email" class="form-control" id="createEmail" placeholder="Enter Email">
+                                    <label for="createPhone">Contact Phone</label>
+                                    <input type="tel" class="form-control" id="createPhone" placeholder="Enter Phone">
+                                    <label for="createAddress">Contact Address</label>
+                                    <input type="text" class="form-control" id="createAddress" placeholder="Enter Addresss">
+                                </div>
+                                <button id="createButton" type="button" class="btn btn-primary" style="margin-bottom: 10px;">POST /api/v1/create</button>
+                            </form>
+                            <div id="createContact">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        PUT Update Contact
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form id="updateForm">
+                                <div class="form-group">
+                                    <label for="updateID">Contact ID</label>
+                                    <input type="number" min="1" class="form-control" id="updateID" placeholder="Enter ID (Required)">
+                                    <label for="updateName">Contact Name</label>
+                                    <input type="text" class="form-control" id="updateName" placeholder="Enter Name">
+                                    <label for="updateEmail">Contact Email</label>
+                                    <input type="email" class="form-control" id="updateEmail" placeholder="Enter Email">
+                                    <label for="updatePhone">Contact Phone</label>
+                                    <input type="tel" class="form-control" id="updatePhone" placeholder="Enter Phone">
+                                    <label for="updateAddress">Contact Address</label>
+                                    <input type="text" class="form-control" id="updateAddress" placeholder="Enter Addresss">
+                                </div>
+                                <button id="updateButton" type="button" class="btn btn-primary" style="margin-bottom: 10px;">PUT /api/v1/update/:id</button>
+                            </form>
+                            <div id="updateContact">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        DELETE Remove Contact
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form id="deleteForm">
+                                <div class="form-group">
+                                    <label for="deleteID">Contact ID</label>
+                                    <input type="number" min="1" class="form-control" id="deleteID" placeholder="Enter ID (Required)">
+                                </div>
+                                <button id="deleteButton" type="button" class="btn btn-primary" style="margin-bottom: 10px;">DELETE /api/v1/delete/:id</button>
+                            </form>
+                            <div id="deleteContact">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
