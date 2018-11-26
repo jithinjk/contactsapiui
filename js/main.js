@@ -9,6 +9,8 @@
   apiCreateLocation = '/api/v1/create';
   apiUpdateLocation = '/api/v1/update/';
   apiDeleteLocation = '/api/v1/delete/';
+  apiSearchNameLocation = '/api/v1/search/name/';
+  apiSearchEmailLocation = '/api/v1/search/email/';
 
   // allContacts
   const app = document.getElementById('allContacts');
@@ -34,6 +36,16 @@
   const appDelete = document.getElementById('deleteContact');
 
   document.getElementById('deleteButton').addEventListener('click', makeDeleteRequest);
+
+  // searchContactName
+  const appSearchName = document.getElementById('singleNameContact');
+
+  document.getElementById('singleNameButton').addEventListener('click', makeSearchNameRequest);
+
+  // searchContactEmail
+  const appSearchEmail = document.getElementById('singleEmailContact');
+
+  document.getElementById('singleEmailButton').addEventListener('click', makeSearchEmailRequest);
 
   function makeRequest() {
 
@@ -108,9 +120,9 @@
     }
 
     var cntID = document.getElementById("singleForm").elements[0].value;
-    singelURL = apiSingleLocation + cntID + '/details';
+    singleURL = apiSingleLocation + cntID + '/details';
 
-    httpSingleRequest.open('GET', path + singelURL);
+    httpSingleRequest.open('GET', path + singleURL);
     httpSingleRequest.setRequestHeader('Authorization', 'Basic ' + btoa(username + ':' + password));
 
     httpSingleRequest.onload = function() {
@@ -326,4 +338,139 @@
 
     httpDeleteRequest.send(null);
   }
+
+  function makeSearchNameRequest() {
+    var httpSingleRequest = new XMLHttpRequest();
+
+    if (!httpSingleRequest) {
+      alert('Cannot create an XMLHTTP instance');
+      return false;
+    }
+
+    var cntName = document.getElementById("singleNameForm").elements[0].value;
+    singleNameURL = apiSearchNameLocation + cntName;
+
+    httpSingleRequest.open('GET', path + singleNameURL);
+    httpSingleRequest.setRequestHeader('Authorization', 'Basic ' + btoa(username + ':' + password));
+
+    httpSingleRequest.onload = function() {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response);
+
+      if (appSingle.hasChildNodes()) {
+        appSingle.removeChild(appSingle.childNodes[0]);
+      }
+      if (httpSingleRequest.status >= 200 && httpSingleRequest.status < 400) {
+
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card');
+
+        const cardHeader = document.createElement('div');
+        cardHeader.setAttribute('class', 'card-header');
+        cardHeader.textContent = 'Details';
+
+        const cardUL = document.createElement('ul');
+        cardUL.setAttribute('class', 'list-group');
+
+        const cardName = document.createElement('li');
+        cardName.setAttribute('class', 'list-group-item');
+        cardName.textContent = data.data.name;
+
+        const cardEmail = document.createElement('li');
+        cardEmail.setAttribute('class', 'list-group-item');
+        cardEmail.textContent = data.data.email;
+
+        const cardPhone = document.createElement('li');
+        cardPhone.setAttribute('class', 'list-group-item');
+        cardPhone.textContent = data.data.phone;
+
+        const cardAddress = document.createElement('li');
+        cardAddress.setAttribute('class', 'list-group-item');
+        cardAddress.textContent = data.data.address;
+
+        appSearchName.appendChild(card);
+        card.appendChild(cardHeader);
+        cardHeader.appendChild(cardUL);
+        cardUL.appendChild(cardName);
+        cardUL.appendChild(cardEmail);
+        cardUL.appendChild(cardPhone);
+        cardUL.appendChild(cardAddress);
+
+      } else {
+        const errorMessage = document.createElement('marquee');
+        errorMessage.textContent = `Argh, it's not working! ` + data["message"];
+        appSearchName.appendChild(errorMessage);
+      }
+    }
+
+    httpSingleRequest.send();
+  }
+
+  function makeSearchEmailRequest() {
+    var httpSingleRequest = new XMLHttpRequest();
+
+    if (!httpSingleRequest) {
+      alert('Cannot create an XMLHTTP instance');
+      return false;
+    }
+
+    var cntEmail = document.getElementById("singleEmailForm").elements[0].value;
+    singleEmailURL = apiSearchEmailLocation + cntEmail;
+
+    httpSingleRequest.open('GET', path + singleEmailURL);
+    httpSingleRequest.setRequestHeader('Authorization', 'Basic ' + btoa(username + ':' + password));
+
+    httpSingleRequest.onload = function() {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response);
+
+      if (appSingle.hasChildNodes()) {
+        appSingle.removeChild(appSingle.childNodes[0]);
+      }
+      if (httpSingleRequest.status >= 200 && httpSingleRequest.status < 400) {
+
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card');
+
+        const cardHeader = document.createElement('div');
+        cardHeader.setAttribute('class', 'card-header');
+        cardHeader.textContent = 'Details';
+
+        const cardUL = document.createElement('ul');
+        cardUL.setAttribute('class', 'list-group');
+
+        const cardName = document.createElement('li');
+        cardName.setAttribute('class', 'list-group-item');
+        cardName.textContent = data.data.name;
+
+        const cardEmail = document.createElement('li');
+        cardEmail.setAttribute('class', 'list-group-item');
+        cardEmail.textContent = data.data.email;
+
+        const cardPhone = document.createElement('li');
+        cardPhone.setAttribute('class', 'list-group-item');
+        cardPhone.textContent = data.data.phone;
+
+        const cardAddress = document.createElement('li');
+        cardAddress.setAttribute('class', 'list-group-item');
+        cardAddress.textContent = data.data.address;
+
+        appSearchEmail.appendChild(card);
+        card.appendChild(cardHeader);
+        cardHeader.appendChild(cardUL);
+        cardUL.appendChild(cardName);
+        cardUL.appendChild(cardEmail);
+        cardUL.appendChild(cardPhone);
+        cardUL.appendChild(cardAddress);
+
+      } else {
+        const errorMessage = document.createElement('marquee');
+        errorMessage.textContent = `Argh, it's not working! ` + data["message"];
+        appSearchEmail.appendChild(errorMessage);
+      }
+    }
+
+    httpSingleRequest.send();
+  }
+
 })();

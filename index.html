@@ -135,6 +135,50 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header" id="headingSix">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        GET Search Contact By Name
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form id="singleNameForm">
+                                <div class="form-group">
+                                    <label for="singleName">Contact Name</label>
+                                    <input type="text" class="form-control" id="singleName" placeholder="Enter Contact Name">
+                                </div>
+                                <button id="singleNameButton" type="button" class="btn btn-primary" style="margin-bottom: 10px;">GET /api/v1/search/name/:name</button>
+                            </form>
+                            <div id="singleNameContact">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        GET Search Contact By Email
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form id="singleEmailForm">
+                                <div class="form-group">
+                                    <label for="singleEmail">Contact Email</label>
+                                    <input type="text" class="form-control" id="singleEmail" placeholder="Enter Contact Email">
+                                </div>
+                                <button id="singleEmailButton" type="button" class="btn btn-primary" style="margin-bottom: 10px;">GET /api/v1/search/email/:email</button>
+                            </form>
+                            <div id="singleEmailContact">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Optional JavaScript -->
