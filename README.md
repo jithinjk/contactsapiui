@@ -1,8 +1,8 @@
-# Plivo Contacts API UI
+# Contacts API UI
 
 > Contacts API UI frontend
 > Written in HTML/CSS/Javasript/Bootstrap
-> To be used along with [Contacts API Backend](https://github.com/jithinjk/plivoapp)
+> To be used along with [Contacts API Backend](https://github.com/jithinjk/contactsapp)
 
 Developement
 ----
